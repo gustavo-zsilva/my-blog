@@ -1,0 +1,13 @@
+query Posts {
+    posts(orderBy: createdAt_ASC) {
+        id
+        createdAt
+        publishedAt
+        
+        title
+        readingTime
+        thumbnail {
+            url
+        }
+    }
+}
