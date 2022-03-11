@@ -6,7 +6,7 @@ import { Container } from './styles'
 export function Hero() {
     return (
         <Container>
-            <h1>Bem-vindo(a) ao meu blog de programação! 👋</h1>
+            <h1>Bem-vindo(a) ao meu blog de programação! <span className="wave">👋</span></h1>
 
             <div>
                 <InfoCard title="Mecânica de XP">
