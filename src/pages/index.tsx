@@ -1,14 +1,28 @@
 import type { NextPage, GetStaticProps } from 'next'
 import Head from 'next/head'
 
-import { useQuery } from 'urql'
-import { client } from '../lib/urql'
+import { client, ssrCache } from '../lib/urql'
 
 import { Header } from '../components/Header'
 import { Hero } from '../components/Hero'
-import { Post } from '../components/Post'
+import { PostList } from '../components/PostList'
 
 import { Container } from '../styles/pages/Home'
+
+const postsQuery = `
+    {
+        posts(orderBy: createdAt_ASC) {
+            id
+            title
+            slug
+            readingTime
+            publishedAt
+            thumbnail {
+                url
+            }
+        }
+    }
+`
 
 const Home: NextPage = () => {
     return (
@@ -19,11 +33,8 @@ const Home: NextPage = () => {
 
             <Header />
             <Hero />
-            <main>
-                <Post />
-                <Post />
-                <Post />
-            </main>
+            
+            <PostList />
         </Container>
     )
 }
@@ -32,9 +43,11 @@ export default Home
 
 export const getStaticProps: GetStaticProps = async () => {
     
+    await client.query(postsQuery).toPromise()
+    
     return {
         props: {
-
+            urqlState: ssrCache.extractData(),
         },
         revalidate: 60 * 60 * 24 // 1 Day
     }
