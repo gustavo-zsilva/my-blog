@@ -4,6 +4,7 @@ import type * as Stitches from '@stitches/react';
 export const {
     styled,
     globalCss,
+    keyframes,
 } = createStitches({
     theme: {
         colors: {
