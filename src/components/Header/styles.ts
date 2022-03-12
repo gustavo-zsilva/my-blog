@@ -10,8 +10,12 @@ export const Container = styled('header', {
     margin: 'auto',
     py: '$1',
 
-    'h2 span': {
-        fontFamily: 'Inconsolata, monospace',
+    'h2': {
+        cursor: 'pointer',
+
+        'span': {
+            fontFamily: 'Inconsolata, monospace',
+        },
     },
 })
 
