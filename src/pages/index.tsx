@@ -33,7 +33,6 @@ const Home: NextPage = () => {
 
             <Header />
             <Hero />
-            
             <PostList />
         </Container>
     )
