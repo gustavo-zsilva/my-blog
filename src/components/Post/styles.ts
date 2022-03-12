@@ -10,11 +10,14 @@ export const Container = styled('div', {
     borderRadius: '.8rem',
 
     overflow: 'hidden',
+    cursor: 'pointer',
 
     '> div': {
         display: 'flex',
         flexDirection: 'column',
-        
+        justifyContent: 'space-between',
+        flex: 1,
+
         padding: '1.6rem 1.8rem',
         gridGap: '2.6rem',
 

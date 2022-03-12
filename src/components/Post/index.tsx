@@ -37,7 +37,6 @@ export function Post(props: PostProps) {
                 <div>
                     <strong>{props?.title}</strong>
                     <div>
-
                         <span>{formattedDate}</span>
                         <span>•</span>
                         <span>{props?.readingTime}</span>
