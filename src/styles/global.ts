@@ -6,15 +6,18 @@ export const globalStyles = globalCss({
         padding: 0,
         boxSizing: 'border-box',
     },
-    'body': {
+    'body, html': {
         height: '100vh',
         fontFamily: 'Source Sans Pro, sans-serif',
-        background: '$bg',
+        background: '$dark',
     },
     'button': {
         border: 0,
         fontFamily: 'inherit',
         cursor: 'pointer',
         transition: '.2s',
+    },
+    'a': {
+        color: '$dark',
     }
 })
