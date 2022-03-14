@@ -1,6 +1,6 @@
 import { styled, darkTheme } from '../../styles/stitches.config'
 
-export const Container = styled('div', {
+export const Container = styled('button', {
     display: 'flex',
     flexDirection: 'column',
 
@@ -28,6 +28,7 @@ export const Container = styled('div', {
         'strong': {
             fontSize: '1.3rem',
             fontWeight: '$semiBold',
+            textAlign: 'start',
         },
         'div': {
             display: 'flex',

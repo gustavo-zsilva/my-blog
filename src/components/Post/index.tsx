@@ -27,13 +27,15 @@ export function Post(props: PostProps) {
     return (
         <Link href={props?.slug} passHref>
             <Container>
-                <Image
-                    src={props?.thumbnail.url}
-                    alt="Post Thumbnail"
-                    width={360}
-                    height={250}
-                    objectFit="cover"
-                />
+                <picture>
+                    <Image
+                        src={props?.thumbnail.url}
+                        alt="Post Thumbnail"
+                        width={400}
+                        height={250}
+                        objectFit="cover"
+                    />
+                </picture>
                 <div>
                     <strong>{props?.title}</strong>
                     <div>

@@ -12,6 +12,7 @@ export function Footer() {
                     href="https://github.com/gustavo-zsilva"
                     rel="noopener noreferrer"
                     target="_blank"
+                    aria-label="Github"
                 >
                     <FiGithub size={22} />
                 </a>
@@ -19,20 +20,23 @@ export function Footer() {
                     href="https://www.linkedin.com/in/gustavo-zsilva"
                     rel="noopener noreferrer"
                     target="_blank"
+                    aria-label="Linkedin"
                 >
                     <FiLinkedin size={22} />
                 </a>
                 <a
-                    href="https://github.com/gustavo-zsilva"
+                    href="https://www.buymeacoffee.com/gustavozx"
                     rel="noopener noreferrer"
                     target="_blank"
+                    aria-label="Buy me a coffee"
                 >
                     <BiCoffeeTogo size={22} />
                 </a>
                 <a
-                    href="https://github.com/gustavo-zsilva"
+                    href="https://discord.gg/zGrUPDhkG2"
                     rel="noopener noreferrer"
                     target="_blank"
+                    aria-label="Discord"
                 >
                     <FaDiscord size={22} />
                 </a>
