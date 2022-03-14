@@ -6,6 +6,8 @@ import { client, ssrCache } from '../lib/urql'
 import { Header } from '../components/Header'
 import { Hero } from '../components/Hero'
 import { PostList } from '../components/PostList'
+import { Footer } from '../components/Footer'
+import { useTheme } from '../hooks/useTheme'
 
 import { Container } from '../styles/pages/Home'
 
@@ -25,8 +27,10 @@ const postsQuery = `
 `
 
 const Home: NextPage = () => {
+    const { theme } = useTheme()
+
     return (
-        <Container>
+        <Container className={theme}>
             <Head>
                 <title>My Dev Blog</title>
             </Head>
@@ -34,6 +38,7 @@ const Home: NextPage = () => {
             <Header />
             <Hero />
             <PostList />
+            <Footer />
         </Container>
     )
 }

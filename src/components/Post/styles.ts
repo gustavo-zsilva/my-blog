@@ -1,16 +1,20 @@
-import { styled } from '../../styles/stitches.config'
+import { styled, darkTheme } from '../../styles/stitches.config'
 
 export const Container = styled('div', {
     display: 'flex',
     flexDirection: 'column',
 
     background: '$bg',
-    
+
     boxShadow: '0 10px 6px 3px rgba(0, 0, 0, 0.1)',
     borderRadius: '.8rem',
 
     overflow: 'hidden',
     cursor: 'pointer',
+
+    [`.${darkTheme} &`]: {
+        color: '#B4B4B4',
+    },
 
     '> div': {
         display: 'flex',
@@ -32,6 +36,9 @@ export const Container = styled('div', {
             'span': {
                 fontSize: '.875rem',
                 color: '#333',
+                [`.${darkTheme} &`]: {
+                    color: '#B4B4B4',
+                }
             },
         },
     }

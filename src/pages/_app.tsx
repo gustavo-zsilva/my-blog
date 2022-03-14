@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app'
 import { Provider } from 'urql'
+import { ThemeProvider } from '../contexts/ThemeContext'
 import { client, ssrCache } from '../lib/urql'
 import { globalStyles } from '../styles/global'
 
@@ -12,7 +13,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
     return (
         <Provider value={client}>
-            <Component {...pageProps} />
+            <ThemeProvider>
+                <Component {...pageProps} />
+            </ThemeProvider>
         </Provider>
     )
 }
