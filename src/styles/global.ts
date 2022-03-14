@@ -7,8 +7,8 @@ export const globalStyles = globalCss({
         boxSizing: 'border-box',
     },
     'body, html': {
-        height: '100vh',
-        fontFamily: 'Source Sans Pro, sans-serif',
+        minHeight: '100vh',
+        fontFamily: 'Source Sans Pro, Helvetica, Arial, sans-serif',
         background: '$dark',
     },
     'button': {
