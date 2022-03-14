@@ -5,11 +5,14 @@ export const {
     styled,
     globalCss,
     keyframes,
+    createTheme,
+    theme,
 } = createStitches({
     theme: {
         colors: {
             bg: '#FFF',
             dark: '#111',
+            light: '#F2F2F2',
             primary: '#F72585',
             primaryDark: '#B5179E',
             secondary: '#3F37C9',
@@ -50,4 +53,12 @@ export const {
             paddingBottom: value,
         }),
     },
+})
+
+export const darkTheme = createTheme('dark-theme', {
+    colors: {
+        bg: '#111',
+        dark: '#FFF',
+        light: '#080808',
+    }
 })
