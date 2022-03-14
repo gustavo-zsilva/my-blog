@@ -12,6 +12,7 @@ export const Container = styled('header', {
 
     'h2': {
         cursor: 'pointer',
+        color: '$dark',
 
         'span': {
             fontFamily: 'Inconsolata, monospace',
@@ -22,7 +23,11 @@ export const Container = styled('header', {
 export const ThemeSwitch = styled('button', {
     width: '30px',
     height: '30px',
-    background: '#F2F2F2',
+    background: '$light',
+
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
 
     borderRadius: '$round',
 })
