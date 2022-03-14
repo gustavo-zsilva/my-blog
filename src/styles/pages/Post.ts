@@ -19,6 +19,7 @@ export const Banner = styled('section', {
 export const Article = styled('article', {
     maxWidth: '50rem',
     margin: 'auto',
+    marginBottom: '$3',
     lineHeight: '1.8',
     fontSize: '1.25rem',
 
