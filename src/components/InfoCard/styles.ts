@@ -5,7 +5,9 @@ export const Container = styled('section', {
     alignItems: 'center',
     gridGap: '1rem',
 
-    background: '$dark',
+    background: '#111',
+    // color: '#F1F1F1',
+
     maxWidth: '20rem',
     borderRadius: '.2rem',
     padding: '1.2rem 1rem',
