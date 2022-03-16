@@ -1,6 +1,9 @@
 import Head from 'next/head'
 import { useRouter } from "next/router"
+
 import { useQuery } from "urql"
+import { client, ssrCache } from '../lib/urql'
+
 import ReactMarkdown from 'react-markdown'
 import { Header } from '../components/Header'
 
@@ -8,16 +11,23 @@ import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 
 import { Container, Banner, Article } from '../styles/pages/Post'
+import { useTheme } from '../hooks/useTheme'
+import { GetStaticPaths, GetStaticProps } from 'next'
 
 type PostProps = {
     title: string,
     publishedAt: string,
+    slug: string,
     content: {
         markdown: any,
     },
     thumbnail: {
         url: string,
     }
+}
+
+type Slug = {
+    slug: string,
 }
 
 type Data = {
@@ -42,19 +52,20 @@ const postQuery = `
 export default function Post() {
     const router = useRouter()
     const { slug } = router.query
+    const { theme } = useTheme()
     
     const [{ data }] = useQuery<Data>({
         query: postQuery,
         variables: { slug },
     })
     
-    const postDate = data ? data.post.publishedAt : new Date()
+    const postDate = data?.post.publishedAt || new Date()
     const formattedDate = format(new Date(postDate), 'PPPP', { locale: ptBR })
 
     console.log(formattedDate)
 
     return (
-        <Container>
+        <Container className={theme}>
             <Head>
                 <title>{data?.post.title} | My Dev Blog</title>
             </Head>
@@ -75,4 +86,33 @@ export default function Post() {
             </Article>
         </Container>
     )
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+
+    const { data } = await client.query(`
+        {
+            posts(orderBy: publishedAt_DESC, first: 10) {
+                slug
+            }
+        }
+    `).toPromise()
+
+    const posts = data.posts.map(({ slug }: Slug) => ({ params: { slug } }))
+
+    return {
+        paths: posts,
+        fallback: 'blocking',
+    }
+}
+
+export const getStaticProps: GetStaticProps = async (ctx) => {
+
+    await client.query(postQuery, { slug: ctx.params?.slug }).toPromise()
+
+    return {
+        props: {
+            urqlState: ssrCache.extractData(),
+        },
+    }
 }
