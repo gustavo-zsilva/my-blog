@@ -17,7 +17,9 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 type PostProps = {
     title: string,
     publishedAt: string,
-    slug: string,
+    createdBy: {
+        name: string,
+    },
     content: {
         markdown: any,
     },
@@ -39,6 +41,9 @@ const postQuery = `
         post(where: {slug: $slug}) {
             title
             publishedAt
+            createdBy {
+                name
+            }
             content {
                 markdown
             }
@@ -62,8 +67,6 @@ export default function Post() {
     const postDate = data?.post.publishedAt || new Date()
     const formattedDate = format(new Date(postDate), 'PPPP', { locale: ptBR })
 
-    console.log(formattedDate)
-
     return (
         <Container className={theme}>
             <Head>
@@ -76,7 +79,7 @@ export default function Post() {
             }} />
             <Article>
                 <p className="post-header">
-                    <address>Gustavo Zonta da Silva</address>
+                    <address>{data?.post.createdBy.name}</address>
                     <span>•</span>
                     <span>{formattedDate}</span>
                 </p>
