@@ -35,6 +35,9 @@ export const {
             3: '3rem',
             max: '80rem',
         },
+        shadows: {
+            post: '0 10px 6px 3px rgba(0, 0, 0, 0.1)',
+        },
     },
     utils: {
         mx: (value: Stitches.ScaleValue<'space'>) => ({
