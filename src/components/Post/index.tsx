@@ -6,30 +6,28 @@ import { ptBR } from 'date-fns/locale'
 import { Container } from './styles'
 
 type PostProps = {
-    id: string,
     title: string,
     slug: string,
     readingTime: string,
-    createdAt: string,
     publishedAt: string,
     thumbnail: {
         url: string,
     }
 }
 
-export function Post(props: PostProps) {
+export function Post({ title, publishedAt, slug, readingTime, thumbnail }: PostProps) {
     const formattedDate = formatDistance(
-        new Date(props?.publishedAt),
+        new Date(publishedAt),
         new Date(),
         { locale: ptBR, addSuffix: true }
     )
     
     return (
-        <Link href={props?.slug} passHref>
+        <Link href={slug} passHref>
             <Container>
                 <picture>
                     <Image
-                        src={props?.thumbnail.url}
+                        src={thumbnail.url}
                         alt="Post Thumbnail"
                         width={400}
                         height={250}
@@ -37,11 +35,11 @@ export function Post(props: PostProps) {
                     />
                 </picture>
                 <div>
-                    <strong>{props?.title}</strong>
+                    <strong>{title}</strong>
                     <div>
                         <span>{formattedDate}</span>
                         <span>•</span>
-                        <span>{props?.readingTime}</span>
+                        <span>{readingTime}</span>
                     </div>
                 </div>
             </Container>

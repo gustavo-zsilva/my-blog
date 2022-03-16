@@ -6,12 +6,11 @@ export const Container = styled('button', {
 
     background: '$bg',
 
-    boxShadow: '0 10px 6px 3px rgba(0, 0, 0, 0.1)',
+    boxShadow: '$post',
     borderRadius: '.8rem',
 
     overflow: 'hidden',
-    cursor: 'pointer',
-
+    
     [`.${darkTheme} &`]: {
         color: '#B4B4B4',
     },
