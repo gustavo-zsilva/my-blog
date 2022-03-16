@@ -6,5 +6,5 @@ export const Container = styled('main', {
     gridGap: '2.6rem',
 
     maxWidth: '80rem',
-    margin: '2rem auto',
+    margin: '3rem auto',
 })

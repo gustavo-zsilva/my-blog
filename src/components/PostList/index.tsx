@@ -1,4 +1,5 @@
 import { useQuery } from "urql";
+import { HighlightPost } from "../HighlightPost"
 import { Post } from "../Post";
 import { Container } from "./styles";
 
@@ -13,6 +14,10 @@ type PostProps = {
     readingTime: string,
     createdAt: string,
     publishedAt: string,
+    createdBy: {
+        name: string,
+        picture: string,
+    },
     thumbnail: {
         url: string,
     }
@@ -21,12 +26,16 @@ type PostProps = {
 export function PostList() {
     const postsQuery = `
         {
-            posts(orderBy: createdAt_ASC) {
+            posts(orderBy: publishedAt_DESC) {
                 id
                 title
                 slug
                 readingTime
                 publishedAt
+                createdBy {
+                    name
+                    picture
+                }
                 thumbnail {
                     url
                 }
@@ -38,6 +47,7 @@ export function PostList() {
     
     return (
         <Container>
+            {data && <HighlightPost {...data.posts[0]} />}
             {data?.posts.map(post => (
                 <Post key={post.id} {...post} />
             ))}
