@@ -3,6 +3,8 @@ import { styled } from "../stitches.config";
 export const Container = styled('div', {
     display: 'flex',
     flexDirection: 'column',
+    
+    background: '$bg',
 
     overflowX: 'hidden',
 })
@@ -22,6 +24,8 @@ export const Article = styled('article', {
     marginBottom: '$3',
     lineHeight: '1.8',
     fontSize: '1.25rem',
+    
+    color: '$dark',
 
     '.post-header': {
         display: 'flex',
