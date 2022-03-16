@@ -13,7 +13,7 @@ import { Container } from '../styles/pages/Home'
 
 const postsQuery = `
     {
-        posts(orderBy: createdAt_ASC) {
+        posts(orderBy: publishedAt_DESC) {
             id
             title
             slug
