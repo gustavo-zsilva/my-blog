@@ -45,7 +45,13 @@ export const Article = styled('article', {
         my: '$2',
     },
 
+    'p': {
+        marginBottom: '$2',
+    },
+
     'code': {
-        wordBreak: 'break-all'
+        background: '#FFFFFF12',
+        padding: '.4rem .8rem',
+        borderRadius: '.2rem',
     }
 })
