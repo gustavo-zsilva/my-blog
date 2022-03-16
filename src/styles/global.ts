@@ -9,7 +9,8 @@ export const globalStyles = globalCss({
     'body, html': {
         minHeight: '100vh',
         fontFamily: 'Source Sans Pro, Helvetica, Arial, sans-serif',
-        background: '$dark',
+        // background: '$dark',
+        // color: '$dark',
     },
     'button': {
         border: 0,
