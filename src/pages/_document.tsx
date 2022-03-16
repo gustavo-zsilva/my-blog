@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import { getCssText } from '../styles/stitches.config'
 
 export default function Document() {
     return (
@@ -7,6 +8,7 @@ export default function Document() {
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
                 <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet" />
+                <style id="stitches" dangerouslySetInnerHTML={{ __html: getCssText() }} />
 
                 <meta
                     name="description"
