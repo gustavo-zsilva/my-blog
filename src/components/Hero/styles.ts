@@ -1,4 +1,4 @@
-import { keyframes, styled } from '../../styles/stitches.config'
+import { keyframes, styled, darkTheme } from '../../styles/stitches.config'
 
 const wave = keyframes({
     '0%': { transform: 'rotate(0.0deg)' },
@@ -25,6 +25,10 @@ export const Container = styled('section', {
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'cover',
+
+    [`.${darkTheme} &`]: {
+        backgroundImage: 'url(https://images.unsplash.com/photo-1581822261290-991b38693d1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)',
+    },
 
     'h1': {
         fontFamily: 'Inconsolata, monospace',
