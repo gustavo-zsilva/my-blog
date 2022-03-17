@@ -14,7 +14,9 @@ export function Header() {
     return (
         <Container>
             <Link href="/" passHref>
-                <h2>My <span>Dev</span> Blog</h2>
+                <button>
+                    <h2>My <span>Dev</span> Blog</h2>
+                </button>
             </Link>
             <div>
                 <ThemeSwitch
