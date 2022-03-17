@@ -19,6 +19,10 @@ const postsQuery = `
             slug
             readingTime
             publishedAt
+            createdBy {
+                name
+                picture
+            }
             thumbnail {
                 url
             }
