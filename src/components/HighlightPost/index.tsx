@@ -30,7 +30,7 @@ export function HighlightPost(props: PostProps) {
     )
 
     return (
-        <Link href={props.slug || '/'} passHref>
+        <Link href={`/${props.slug}`} passHref>
             <Container css={{
                 backgroundImage: `url(${props.thumbnail.url})`
             }}>
