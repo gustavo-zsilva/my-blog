@@ -10,7 +10,6 @@ const nextConfig = {
   },
   env: {
     GRAPHCMS_ENDPOINT: process.env.GRAPHCMS_ENDPOINT,
-    AUTH_TOKEN: process.env.AUTH_TOKEN,
   }
 }
 
