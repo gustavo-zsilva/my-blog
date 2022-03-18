@@ -21,6 +21,12 @@ export const Container = styled('header', {
             },
         },
     },
+
+    '.header-controls': {
+        display: 'flex',
+        alignItems: 'center',
+        gridGap: '.6rem',
+    },
 })
 
 export const ThemeSwitch = styled('button', {
