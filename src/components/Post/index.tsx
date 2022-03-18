@@ -23,7 +23,7 @@ export function Post({ title, publishedAt, slug, readingTime, thumbnail }: PostP
     )
     
     return (
-        <Link href={slug} passHref>
+        <Link href={`/${slug}`} passHref>
             <Container>
                 <picture>
                     <Image
