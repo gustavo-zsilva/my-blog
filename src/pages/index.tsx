@@ -57,6 +57,6 @@ export const getStaticProps: GetStaticProps = async () => {
         props: {
             urqlState: ssrCache.extractData(),
         },
-        revalidate: 60 * 60 * 24 // 1 Day
+        revalidate: 60 * 60 * 12 // 12 hours
     }
 }
