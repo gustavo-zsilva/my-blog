@@ -7,16 +7,17 @@ export const globalStyles = globalCss({
         boxSizing: 'border-box',
     },
     'body, html': {
-        minHeight: '100vh',
         fontFamily: 'Source Sans Pro, Helvetica, Arial, sans-serif',
-        // background: '$dark',
-        // color: '$dark',
     },
     'button': {
         border: 0,
         fontFamily: 'inherit',
         cursor: 'pointer',
         transition: '.2s',
+        
+        '&:focus': {
+            outline: '2px solid $primary',
+        }
     },
     'a': {
         color: '$dark',
