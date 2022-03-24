@@ -1,7 +1,4 @@
 import { styled } from '../stitches.config'
+import { Container as Layout } from '../../components/Layout/styles'
 
-export const Container = styled('div', {
-    display: 'flex',
-    flexDirection: 'column',
-    background: '$bg',
-})
+export const Container = styled(Layout)
