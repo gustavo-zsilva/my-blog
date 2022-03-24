@@ -15,9 +15,7 @@ export const {
             dark: '#111',
             light: '#F2F2F2',
             primary: '#F72585',
-            primaryDark: '#B5179E',
-            secondary: '#3F37C9',
-            secondaryDark: '#480CA8',
+            code: '#0001',
         },
         fontWeights: {
             thin: '300',
@@ -33,11 +31,18 @@ export const {
             1: '1rem',
             2: '2rem',
             3: '3rem',
+            4: '4rem',
+            5: '5rem',
             max: '80rem',
         },
         shadows: {
             post: '0 10px 6px 3px rgba(0, 0, 0, 0.1)',
         },
+    },
+    media: {
+        mobile: '(min-width: 0)',
+        tablet: '(min-width: 540px)',
+        desktop: '(min-width: 1330px)',
     },
     utils: {
         mx: (value: Stitches.ScaleValue<'space'>) => ({
@@ -64,5 +69,6 @@ export const darkTheme = createTheme('dark-theme', {
         bg: '#111',
         dark: '#FFF',
         light: '#080808',
+        code: '#FFFFFF12',
     }
 })
