@@ -10,6 +10,7 @@ import { Footer } from '../components/Footer'
 import { useTheme } from '../hooks/useTheme'
 
 import { Container } from '../styles/pages/Home'
+import { Offline } from '../components/Offline'
 
 const postsQuery = `
     {
@@ -32,6 +33,7 @@ const postsQuery = `
 
 const Home: NextPage = () => {
     const { theme } = useTheme()
+    const isOnline = typeof window !== 'undefined' && window.navigator.onLine
 
     return (
         <Container className={theme}>
@@ -41,7 +43,10 @@ const Home: NextPage = () => {
 
             <Header />
             <Hero />
-            <PostList />
+            {isOnline
+                ? <PostList />
+                : <Offline />}
+            
             <Footer />
         </Container>
     )
