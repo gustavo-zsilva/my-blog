@@ -1,6 +1,9 @@
-import { useQuery } from "urql";
+import { useState } from 'react'
+
 import { HighlightPost } from "../HighlightPost"
 import { Post } from "../Post";
+
+import { useQuery } from "urql";
 import { Container } from "./styles";
 
 type Data = {
