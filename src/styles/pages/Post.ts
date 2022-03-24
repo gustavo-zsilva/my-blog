@@ -1,12 +1,12 @@
 import { styled } from "../stitches.config";
+import { Container as Layout } from '../../components/Layout/styles'
 
 export const Container = styled('div', {
-    display: 'flex',
-    flexDirection: 'column',
-    
-    background: '$bg',
-
-    overflowX: 'hidden',
+    '.content': {
+        display: 'flex',
+        justifyContent: 'center',
+        gridGap: '$3',
+    },
 })
 
 export const Banner = styled('section', {
@@ -20,11 +20,10 @@ export const Banner = styled('section', {
 
 export const Article = styled('article', {
     maxWidth: '50rem',
-    margin: 'auto',
     marginBottom: '$3',
     lineHeight: '1.8',
     fontSize: '1.25rem',
-    
+
     color: '$dark',
 
     '.post-header': {
@@ -50,7 +49,7 @@ export const Article = styled('article', {
     },
 
     'code': {
-        background: '#FFFFFF12',
+        background: '$code',
         padding: '.4rem .8rem',
         borderRadius: '.2rem',
     }

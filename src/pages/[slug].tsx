@@ -1,18 +1,17 @@
-import Head from 'next/head'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from "next/router"
 
 import { useQuery } from "urql"
 import { client, ssrCache } from '../lib/urql'
 
-import ReactMarkdown from 'react-markdown'
-import { Header } from '../components/Header'
-
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 
+import { Sidebar } from '../components/Sidebar'
+import ReactMarkdown from 'react-markdown'
+
 import { Container, Banner, Article } from '../styles/pages/Post'
-import { useTheme } from '../hooks/useTheme'
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { Layout } from '../components/Layout'
 
 type PostProps = {
     title: string,
@@ -57,7 +56,6 @@ const postQuery = `
 export default function Post() {
     const router = useRouter()
     const { slug } = router.query
-    const { theme } = useTheme()
     
     const [{ data }] = useQuery<Data>({
         query: postQuery,
@@ -68,26 +66,28 @@ export default function Post() {
     const formattedDate = format(new Date(postDate), 'PPPP', { locale: ptBR })
 
     return (
-        <Container className={theme}>
-            <Head>
-                <title>{data?.post.title} | My Dev Blog</title>
-            </Head>
-            
-            <Header />
-            <Banner css={{
-                backgroundImage: `url(${data?.post.thumbnail.url})`,
-            }} />
-            <Article>
-                <p className="post-header">
-                    <address>{data?.post.createdBy.name}</address>
-                    <span>•</span>
-                    <span>{formattedDate}</span>
-                </p>
-                <h1>{data?.post.title}</h1>
-                <ReactMarkdown>{data?.post.content.markdown}</ReactMarkdown>
-                
-            </Article>
-        </Container>
+        <Layout title={data?.post.title}>
+            <Container>
+                <Banner css={{
+                    backgroundImage: `url(${data?.post.thumbnail.url})`,
+                }} />
+                <div className="content">
+                    <Article>
+                        <p className="post-header">
+                            <address>{data?.post.createdBy.name}</address>
+                            <span>•</span>
+                            <span>{formattedDate}</span>
+                        </p>
+                        <h1>{data?.post.title}</h1>
+                        <ReactMarkdown>
+                            {data?.post.content.markdown}
+                        </ReactMarkdown>
+                        
+                    </Article>
+                    <Sidebar />
+                </div>
+            </Container>
+        </Layout>
     )
 }
 
@@ -111,7 +111,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
 
-    await client.query(postQuery, { slug: ctx.params?.slug }).toPromise()
+    const { data } = await client.query(postQuery, { slug: ctx.params?.slug }).toPromise()
+
+    if (!data.post) {
+        return {
+            notFound: true,
+        }
+    }
 
     return {
         props: {
