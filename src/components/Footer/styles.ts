@@ -15,8 +15,4 @@ export const Container = styled('footer', {
         display: 'flex',
         gridGap: '$2',
     },
-
-    'p span': {
-        fontStyle: 'italic',
-    }
 })

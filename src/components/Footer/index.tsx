@@ -12,7 +12,7 @@ export function Footer() {
                     href="https://github.com/gustavo-zsilva"
                     rel="noopener noreferrer"
                     target="_blank"
-                    aria-label="Github"
+                    aria-label="My Github"
                 >
                     <FiGithub size={22} />
                 </a>
@@ -20,7 +20,7 @@ export function Footer() {
                     href="https://www.linkedin.com/in/gustavo-zsilva"
                     rel="noopener noreferrer"
                     target="_blank"
-                    aria-label="Linkedin"
+                    aria-label="My Linkedin"
                 >
                     <FiLinkedin size={22} />
                 </a>
@@ -36,13 +36,13 @@ export function Footer() {
                     href="https://discord.gg/zGrUPDhkG2"
                     rel="noopener noreferrer"
                     target="_blank"
-                    aria-label="Discord"
+                    aria-label="My Discord Server"
                 >
                     <FaDiscord size={22} />
                 </a>
             </div>
             <div>
-                <p>Created by <span>Gustavo Zonta da Silva © 2022</span></p>
+                <p>Created by <i>Gustavo Zonta da Silva © 2022</i></p>
             </div>
         </Container>
     )
