@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import { HighlightPost } from "../HighlightPost"
 import { Post } from "../Post";
 
