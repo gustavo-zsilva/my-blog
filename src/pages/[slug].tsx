@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from "next/router"
 
@@ -56,6 +57,7 @@ const postQuery = `
 export default function Post() {
     const router = useRouter()
     const { slug } = router.query
+    const [scrollPercentage, setScrollPercentage] = useState(0)
     
     const [{ data }] = useQuery<Data>({
         query: postQuery,
@@ -64,6 +66,24 @@ export default function Post() {
     
     const postDate = data?.post.publishedAt || new Date()
     const formattedDate = format(new Date(postDate), 'PPPP', { locale: ptBR })
+
+    function scrollCallback() {
+        window.requestAnimationFrame(() => {
+            const scrollTop = window.scrollY
+            const docHeight = document.body.offsetHeight
+            const winHeight = window.innerHeight
+
+            const scrollPercent = scrollTop / (docHeight - winHeight)
+            const scrollPercentRounded = Math.round(scrollPercent * 100)
+
+            setScrollPercentage(scrollPercentRounded)
+        })
+    }
+
+    useEffect(() => {
+        window.addEventListener('scroll', scrollCallback)
+        return () => window.removeEventListener('scroll', scrollCallback)
+    }, [])
 
     return (
         <Layout title={data?.post.title}>
@@ -84,7 +104,7 @@ export default function Post() {
                         </ReactMarkdown>
                         
                     </Article>
-                    <Sidebar />
+                    <Sidebar scrollPercentage={scrollPercentage} />
                 </div>
             </Container>
         </Layout>
