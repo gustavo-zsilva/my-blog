@@ -1,14 +1,34 @@
 import { FiGithub } from 'react-icons/fi'
 import { BiCoffeeTogo } from 'react-icons/bi'
 
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
+import { useTheme } from '../../hooks/useTheme'
 import { Container, ExperienceCircle, Link } from './styles'
 
-export function Sidebar() {
+type SidebarProps = {
+    scrollPercentage: number,
+}
+
+export function Sidebar({ scrollPercentage }: SidebarProps) {
+    const { theme } = useTheme()
+    const isDarkTheme = theme.className === 'dark-theme'
+
     return (
         <Container>
             <ExperienceCircle>
-                <strong>75</strong>
-                <span>xp</span>
+                <CircularProgressbar
+                    value={scrollPercentage}
+                    strokeWidth={10}
+                    text="75 xp"
+                    styles={
+                        buildStyles({
+                            pathColor: '#F72585',
+                            trailColor: `${isDarkTheme ? '#363636' : '#ebebeb'}`,
+                            textColor: `${isDarkTheme ? '#FFF' : '#111'}`,
+                            textSize: '1.6rem',
+                        })
+                    }
+                />
             </ExperienceCircle>
             <Link
                 href="https://github.com/gustavo-zsilva"
