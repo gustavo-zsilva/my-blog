@@ -6,6 +6,7 @@ import { LevelProvider } from '../contexts/LevelContext'
 
 import { client, ssrCache } from '../lib/urql'
 import { globalStyles } from '../styles/global'
+import 'react-circular-progressbar/dist/styles.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
     globalStyles()
