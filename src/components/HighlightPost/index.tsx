@@ -11,7 +11,7 @@ type PostProps = {
     id: string,
     title: string,
     slug: string,
-    readingTime: string,
+    readingTime: number,
     publishedAt: string,
     createdBy: {
         name: string,
@@ -58,7 +58,7 @@ export function HighlightPost(props: PostProps) {
                 <div>
                     <span>{formattedDate}</span>
                     <span>•</span>
-                    <span>{props.readingTime}</span>
+                    <span>{props.readingTime} min</span>
                 </div>
             </Container>
         </Link>
