@@ -2,15 +2,19 @@ import Link from 'next/link'
 
 import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs'
 
-import { useTheme } from '../../hooks/useTheme';
+import { useTheme } from '../../hooks/useTheme'
+import { useLevel } from '../../hooks/useLevel'
 import { useButton } from '@react-aria/button'
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 
 import { Player } from '../Player'
-import { Container, ThemeSwitch } from "./styles";
+import { Container, ThemeSwitch, LevelTracker } from "./styles"
 
 export function Header() {
     const { handleSwitchTheme, theme } = useTheme()
     // const {  } = useButton()
+    const { level, experiencePercent } = useLevel()
+    const isDarkTheme = theme.className === 'dark-theme'
 
     return (
         <Container>
@@ -20,6 +24,18 @@ export function Header() {
                 </button>
             </Link>
             <div className="header-controls">
+                <LevelTracker>
+                    <CircularProgressbar
+                        value={experiencePercent}
+                        text={level.toString()}
+                        styles={buildStyles({
+                            pathColor: '#F72585',
+                            trailColor: `${isDarkTheme ? '#363636' : '#ebebeb'}`,
+                            textColor: `${isDarkTheme ? '#FFF' : '#111'}`,
+                            textSize: '2.5rem',
+                        })}
+                    />
+                </LevelTracker>
                 <Player />
                 <ThemeSwitch
                     onClick={handleSwitchTheme}

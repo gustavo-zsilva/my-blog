@@ -40,3 +40,9 @@ export const ThemeSwitch = styled('button', {
 
     borderRadius: '$round',
 })
+
+export const LevelTracker = styled('div', {
+    width: '36px',
+    height: '36px',
+    marginRight: '.8rem',
+})
