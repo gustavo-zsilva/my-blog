@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from "next/router"
 
@@ -9,14 +9,18 @@ import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 
 import { Sidebar } from '../components/Sidebar'
+import { Layout } from '../components/Layout'
+import { useLevel } from '../hooks/useLevel'
+
 import ReactMarkdown from 'react-markdown'
 
 import { Container, Banner, Article } from '../styles/pages/Post'
-import { Layout } from '../components/Layout'
 
 type PostProps = {
+    id: string,
     title: string,
     publishedAt: string,
+    readingTime: number,
     createdBy: {
         name: string,
     },
@@ -39,8 +43,10 @@ type Data = {
 const postQuery = `
     query ($slug: String!) {
         post(where: {slug: $slug}) {
+            id
             title
             publishedAt
+            readingTime
             createdBy {
                 name
             }
@@ -57,6 +63,7 @@ const postQuery = `
 export default function Post() {
     const router = useRouter()
     const { slug } = router.query
+    const { finishedPosts, handleAddFinishedPost } = useLevel()
     const [scrollPercentage, setScrollPercentage] = useState(0)
     
     const [{ data }] = useQuery<Data>({
@@ -67,6 +74,11 @@ export default function Post() {
     const postDate = data?.post.publishedAt || new Date()
     const formattedDate = format(new Date(postDate), 'PPPP', { locale: ptBR })
 
+    const experienceToGain = (data?.post.readingTime || 3) * 12
+    const isPostFinished = useMemo(() => (
+        finishedPosts.some((post) => post.id === data?.post.id)
+    ), [finishedPosts, data?.post.id])
+    
     function scrollCallback() {
         window.requestAnimationFrame(() => {
             const scrollTop = window.scrollY
@@ -76,13 +88,18 @@ export default function Post() {
             const scrollPercent = scrollTop / (docHeight - winHeight)
             const scrollPercentRounded = Math.round(scrollPercent * 100)
 
+            if (scrollPercentRounded === 100) {
+                handleAddFinishedPost(data?.post.id ?? '', experienceToGain)
+                window.removeEventListener('scroll', scrollCallback, true)
+            }
+
             setScrollPercentage(scrollPercentRounded)
         })
     }
 
     useEffect(() => {
-        window.addEventListener('scroll', scrollCallback)
-        return () => window.removeEventListener('scroll', scrollCallback)
+        window.addEventListener('scroll', scrollCallback, true)
+        return () => window.removeEventListener('scroll', scrollCallback, true)
     }, [])
 
     return (
@@ -93,18 +110,22 @@ export default function Post() {
                 }} />
                 <div className="content">
                     <Article>
-                        <p className="post-header">
+                        <div className="post-header">
                             <address>{data?.post.createdBy.name}</address>
                             <span>•</span>
                             <span>{formattedDate}</span>
-                        </p>
+                        </div>
                         <h1>{data?.post.title}</h1>
                         <ReactMarkdown>
                             {data?.post.content.markdown}
                         </ReactMarkdown>
                         
                     </Article>
-                    <Sidebar scrollPercentage={scrollPercentage} />
+                    <Sidebar
+                        scrollPercentage={scrollPercentage}
+                        isPostFinished={isPostFinished}
+                        experienceToGain={experienceToGain}
+                    />
                 </div>
             </Container>
         </Layout>
