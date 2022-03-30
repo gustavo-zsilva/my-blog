@@ -7,9 +7,15 @@ import { Container, ExperienceCircle, Link } from './styles'
 
 type SidebarProps = {
     scrollPercentage: number,
-}
+    isPostFinished: boolean,
+    experienceToGain: number,
+} 
 
-export function Sidebar({ scrollPercentage }: SidebarProps) {
+export function Sidebar({
+    scrollPercentage,
+    isPostFinished,
+    experienceToGain,
+}: SidebarProps) {
     const { theme } = useTheme()
     const isDarkTheme = theme.className === 'dark-theme'
 
@@ -17,12 +23,12 @@ export function Sidebar({ scrollPercentage }: SidebarProps) {
         <Container>
             <ExperienceCircle>
                 <CircularProgressbar
-                    value={scrollPercentage}
+                    value={isPostFinished ? 100 : scrollPercentage}
                     strokeWidth={10}
-                    text="75 xp"
+                    text={`${experienceToGain} xp`}
                     styles={
                         buildStyles({
-                            pathColor: '#F72585',
+                            pathColor: `${isPostFinished ? '#7dff7d' : '#F72585'}`,
                             trailColor: `${isDarkTheme ? '#363636' : '#ebebeb'}`,
                             textColor: `${isDarkTheme ? '#FFF' : '#111'}`,
                             textSize: '1.6rem',
