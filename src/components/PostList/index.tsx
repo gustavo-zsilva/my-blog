@@ -12,7 +12,7 @@ type PostProps = {
     id: string,
     title: string,
     slug: string,
-    readingTime: string,
+    readingTime: number,
     createdAt: string,
     publishedAt: string,
     createdBy: {

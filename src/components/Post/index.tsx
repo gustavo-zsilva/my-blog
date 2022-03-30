@@ -8,7 +8,7 @@ import { Container } from './styles'
 type PostProps = {
     title: string,
     slug: string,
-    readingTime: string,
+    readingTime: number,
     publishedAt: string,
     thumbnail: {
         url: string,
@@ -39,7 +39,7 @@ export function Post({ title, publishedAt, slug, readingTime, thumbnail }: PostP
                     <div>
                         <span>{formattedDate}</span>
                         <span>•</span>
-                        <span>{readingTime}</span>
+                        <span>{readingTime} min</span>
                     </div>
                 </div>
             </Container>
