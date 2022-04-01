@@ -21,6 +21,7 @@ export const Container = styled('button', {
 
     position: 'relative',
     overflow: 'hidden',
+    cursor: 'pointer',
     
     '&:after': {
         content: '',

@@ -3,6 +3,8 @@ import Link from 'next/link'
 
 import { formatDistance } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
+
+import { motion } from 'framer-motion'
 import { Container } from './styles'
 
 type PostProps = {
@@ -21,10 +23,20 @@ export function Post({ title, publishedAt, slug, readingTime, thumbnail }: PostP
         new Date(),
         { locale: ptBR, addSuffix: true }
     )
+
+    const itemAnimation = {
+        hidden: { opacity: 0, y: -20 },
+        show: { opacity: 1, y: 0 },
+    }
     
     return (
         <Link href={`/${slug}`} passHref>
-            <Container>
+            <Container
+                as={motion.div}
+                variants={itemAnimation}
+                whileHover={{ y: -20 }}
+                transition={{ bounce: 0 }}
+            >
                 <picture>
                     <Image
                         src={thumbnail.url}

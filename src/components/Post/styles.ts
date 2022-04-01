@@ -10,6 +10,7 @@ export const Container = styled('button', {
     borderRadius: '.8rem',
 
     overflow: 'hidden',
+    cursor: 'pointer',
     
     [`.${darkTheme} &`]: {
         color: '#B4B4B4',

@@ -5,6 +5,7 @@ import { formatDistance } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 
 import { FaFire } from 'react-icons/fa'
+import { motion } from 'framer-motion'
 import { Container, LatestBadge } from "./styles";
 
 type PostProps = {
@@ -29,11 +30,23 @@ export function HighlightPost(props: PostProps) {
         { locale: ptBR, addSuffix: true }
     )
 
+    const itemAnimation = {
+        hidden: { opacity: 0, y: -20 },
+        show: { opacity: 1, y: 0 },
+    }
+
     return (
         <Link href={`/${props.slug}`} passHref>
-            <Container css={{
-                backgroundImage: `url(${props.thumbnail.url})`
-            }}>
+            <Container
+                css={{
+                    backgroundImage: `url(${props.thumbnail.url})`
+                }}
+                as={motion.div}
+                variants={itemAnimation}
+                whileHover={{ y: -20 }}
+                
+                transition={{ bounce: 0 }}
+            >
                 <div className="post-header">
                     <div>
                         <div>
