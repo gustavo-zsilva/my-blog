@@ -42,8 +42,8 @@ export function HighlightPost(props: PostProps) {
                     backgroundImage: `url(${props.thumbnail.url})`
                 }}
                 as={motion.div}
-                variants={itemAnimation}
-                whileHover={{ y: -20 }}
+                // variants={itemAnimation}
+                // whileHover={{ y: -20 }}
                 
                 transition={{ bounce: 0 }}
             >

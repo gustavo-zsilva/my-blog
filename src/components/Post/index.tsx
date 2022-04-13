@@ -33,8 +33,8 @@ export function Post({ title, publishedAt, slug, readingTime, thumbnail }: PostP
         <Link href={`/${slug}`} passHref>
             <Container
                 as={motion.div}
-                variants={itemAnimation}
-                whileHover={{ y: -20 }}
+                // variants={itemAnimation}
+                // whileHover={{ y: -20 }}
                 transition={{ bounce: 0 }}
             >
                 <picture>
@@ -43,6 +43,7 @@ export function Post({ title, publishedAt, slug, readingTime, thumbnail }: PostP
                         alt="Post Thumbnail"
                         width={400}
                         height={250}
+                        layout="responsive"
                         objectFit="cover"
                     />
                 </picture>

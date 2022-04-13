@@ -7,4 +7,17 @@ export const Container = styled('main', {
 
     maxWidth: '80rem',
     margin: '3rem auto',
+
+    '@mobile': {
+        display: 'flex',
+        flexDirection: 'column',
+    },
+
+    '@tablet': {
+        gridTemplateColumns: '1fr 1fr',
+    },
+
+    '@desktop': {
+        gridTemplateColumns: '1fr 1fr 1fr'
+    }
 })
