@@ -4,6 +4,7 @@ export const Container = styled('button', {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
+    minHeight: '24rem',
 
     padding: '2.2rem 1.8rem',
     borderRadius: '.8rem',
@@ -23,6 +24,7 @@ export const Container = styled('button', {
     overflow: 'hidden',
     cursor: 'pointer',
     
+    // Dim Overlay (darken bg image)
     '&:after': {
         content: '',
         position: 'absolute',
@@ -73,7 +75,6 @@ export const Container = styled('button', {
             fontSize: '2.2rem',
         },
     },
-
 
     'div': {
         display: 'flex',

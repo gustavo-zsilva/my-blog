@@ -15,7 +15,11 @@ export const Container = styled('button', {
     [`.${darkTheme} &`]: {
         color: '#B4B4B4',
     },
-    
+
+    'picture': {
+        width: '100%',
+    },
+
     '> div': {
         display: 'flex',
         flexDirection: 'column',
@@ -33,6 +37,8 @@ export const Container = styled('button', {
         'div': {
             display: 'flex',
             gridGap: '.6rem',
+            alignItems: 'center',
+            justifyContent: 'space-between',
 
             'span': {
                 fontSize: '.875rem',

@@ -3,11 +3,14 @@ import Link from 'next/link'
 
 import { formatDistance } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
+import { AiFillStar } from 'react-icons/ai'
 
 import { motion } from 'framer-motion'
+import { useLevel } from '../../hooks/useLevel'
 import { Container } from './styles'
 
 type PostProps = {
+    id: string,
     title: string,
     slug: string,
     readingTime: number,
@@ -17,7 +20,10 @@ type PostProps = {
     }
 }
 
-export function Post({ title, publishedAt, slug, readingTime, thumbnail }: PostProps) {
+export function Post({ id, title, publishedAt, slug, readingTime, thumbnail }: PostProps) {
+    const { finishedPosts } = useLevel()
+    const isFinished = finishedPosts.some(post => post.id === id)
+
     const formattedDate = formatDistance(
         new Date(publishedAt),
         new Date(),
@@ -32,10 +38,10 @@ export function Post({ title, publishedAt, slug, readingTime, thumbnail }: PostP
     return (
         <Link href={`/${slug}`} passHref>
             <Container
-                as={motion.div}
+                as={motion.button}
                 // variants={itemAnimation}
                 // whileHover={{ y: -20 }}
-                transition={{ bounce: 0 }}
+                // transition={{ bounce: 0 }}
             >
                 <picture>
                     <Image
@@ -50,9 +56,12 @@ export function Post({ title, publishedAt, slug, readingTime, thumbnail }: PostP
                 <div>
                     <strong>{title}</strong>
                     <div>
-                        <span>{formattedDate}</span>
-                        <span>•</span>
-                        <span>{readingTime} min</span>
+                        <div>
+                            <span>{formattedDate}</span>
+                            <span>•</span>
+                            <span>{readingTime} min</span>
+                        </div>
+                        <span>{isFinished && <AiFillStar size={24} color="#1371F5" />}</span>
                     </div>
                 </div>
             </Container>
