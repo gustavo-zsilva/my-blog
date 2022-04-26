@@ -10,7 +10,6 @@
     "codegen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
-    "@react-aria/button": "^3.4.2",
     "@stitches/react": "^1.2.7",
     "date-fns": "^2.28.0",
     "framer-motion": "^6.2.8",
