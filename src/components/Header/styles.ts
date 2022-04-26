@@ -10,6 +10,10 @@ export const Container = styled('header', {
     margin: 'auto',
     py: '$1',
 
+    '@tablet': {
+        px: '$2',
+    },
+
     'button': {
         background: 'none',
         

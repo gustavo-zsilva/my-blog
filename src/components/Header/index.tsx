@@ -4,7 +4,6 @@ import { BsFillMoonFill, BsFillSunFill } from 'react-icons/bs'
 
 import { useTheme } from '../../hooks/useTheme'
 import { useLevel } from '../../hooks/useLevel'
-import { useButton } from '@react-aria/button'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 
 import { Player } from '../Player'
@@ -12,7 +11,6 @@ import { Container, ThemeSwitch, LevelTracker } from "./styles"
 
 export function Header() {
     const { handleSwitchTheme, theme } = useTheme()
-    // const {  } = useButton()
     const { level, experiencePercent } = useLevel()
     const isDarkTheme = theme.className === 'dark-theme'
 
