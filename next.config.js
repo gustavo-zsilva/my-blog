@@ -5,6 +5,7 @@ const nextConfig = {
     domains: [
         'images.unsplash.com',
         'media.graphcms.com',
+        'media.graphassets.com',
         'lh3.googleusercontent.com',
     ],
   },
