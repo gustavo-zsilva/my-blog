@@ -47,6 +47,12 @@ export const Container = styled('section', {
         gridGap: '2rem',
         margin: '2rem auto 0',
 
+        '@mobile': {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+        },
+
         '> strong': {
             display: 'flex',
             alignItems: 'center',
