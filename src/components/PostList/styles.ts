@@ -8,16 +8,13 @@ export const Container = styled('main', {
     maxWidth: '80rem',
     margin: '3rem auto',
 
+    '@tablet': {
+        gridTemplateColumns: '1fr 1fr',
+        mx: '$2',
+    },
+
     '@mobile': {
         display: 'flex',
         flexDirection: 'column',
     },
-
-    '@tablet': {
-        gridTemplateColumns: '1fr 1fr',
-    },
-
-    '@desktop': {
-        gridTemplateColumns: '1fr 1fr 1fr'
-    }
 })
