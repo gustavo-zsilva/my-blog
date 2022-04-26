@@ -15,6 +15,7 @@ export const {
             dark: '#111',
             light: '#F2F2F2',
             primary: '#F72585',
+            blue: '#1E90FF',
             code: '#0001',
         },
         fontWeights: {
@@ -40,9 +41,9 @@ export const {
         },
     },
     media: {
-        mobile: '(min-width: 0)',
-        tablet: '(min-width: 540px)',
-        desktop: '(min-width: 1330px)',
+        mobile: '(max-width: 680px)',
+        tablet: '(max-width: 1330px)',
+        desktop: '(max-width: 1600px)',
     },
     utils: {
         mx: (value: Stitches.ScaleValue<'space'>) => ({
